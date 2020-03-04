@@ -5,6 +5,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Shopfront from './pages/Shopfront';
+import Cart from './pages/Cart';
 
 export default function App() {
   return (
@@ -13,7 +15,7 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">Shop</Link>
             </li>
             <li>
               <Link to="/cart">Cart</Link>
@@ -26,18 +28,10 @@ export default function App() {
             <Cart />
           </Route>
           <Route path="/">
-            <Home />
+            <Shopfront />
           </Route>
         </Switch>
       </div>
     </Router>
   );
-}
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function Cart() {
-  return <h2>Cart</h2>;
 }
