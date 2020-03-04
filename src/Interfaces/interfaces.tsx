@@ -8,7 +8,7 @@ interface brand {
 
 interface sku {
     description: string,
-    is: string,
+    id: string,
     price: number,
     stock: number,
 }
@@ -35,4 +35,8 @@ export interface Image {
     image?: string,
     alt?: string,
     title?: string,
+}
+
+export interface ProductContainerState {
+    selectedSku: string,
 }

@@ -3,7 +3,7 @@ import { Image } from '../Interfaces/interfaces';
 
 
 const ProductImage = (props: Image) => {
-    console.log(props);
+    // console.log(props);
     const { image, alt } = props;
 
     return <img

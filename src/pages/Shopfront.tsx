@@ -16,7 +16,7 @@ class Shopfront extends React.Component<ShopfrontProps, ShopfrontState> {
     }
 
     componentDidUpdate() {
-        console.log(this.state.products);
+        // console.log(this.state.products);
     }
 
     render() {
