@@ -1,0 +1,23 @@
+.product-container {
+    padding: 14px;
+    margin: 14px;
+    background-color: #efeee8;
+    display: flex;
+    flex-direction: row;
+}
+
+.product-container-image {
+    background-color: orange;
+    flex: 1;
+}
+
+.product-image {
+    height: 200px;
+}
+
+.product-container-content {
+    padding-left: 14px;
+    padding-right: 14px;
+    background-color: palegreen;
+    flex: 3;
+}

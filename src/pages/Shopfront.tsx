@@ -25,7 +25,6 @@ class Shopfront extends React.Component<ShopfrontProps, ShopfrontState> {
                 <h2>Shopfront</h2>
                 {this.state.products.length > 0 ?
                     this.state.products.map((product: Product) => {
-                        // console.log(product);
                         const { id, title, image, brand, skus } = product;
                         return <ProductContainer
                             key={id}    

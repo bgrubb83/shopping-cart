@@ -30,3 +30,9 @@ export interface Product {
     brand?: brand,
     skus?: sku[],
 }
+
+export interface Image {
+    image?: string,
+    alt?: string,
+    title?: string,
+}
