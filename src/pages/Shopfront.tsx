@@ -13,12 +13,13 @@ class Shopfront extends React.Component<ShopfrontProps, ShopfrontState> {
                     this.props.appState.products.map((product: Product) => {
                         const { id, title, image, brand, skus } = product;
                         return <ProductContainer
-                            key={id}    
+                            key={id || String(Date.now())}    
                             title={title}
                             id={id}
                             image={image}
                             brand={brand}
                             skus={skus}
+                            addToCart={this.props.addToCart}
                         />
                     })
                     : null}

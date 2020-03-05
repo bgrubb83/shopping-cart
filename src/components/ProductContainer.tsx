@@ -20,10 +20,12 @@ class ProductContainer extends React.Component<Product, ProductContainerState> {
                         const { description, id, price, stock } = sku;
                         return <ProductSku
                             description={description}
+                            productId={this.props.id}
                             id={id}
                             price={price}
                             stock={stock}
                             key={id}
+                            addToCart={this.props.addToCart}
                         />
                     })}
                 </section>

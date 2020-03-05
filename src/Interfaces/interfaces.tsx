@@ -19,13 +19,16 @@ export interface AppState {
 
 export interface sku {
     description: string,
+    productId?: string,
     id: string,
     price: number,
     stock: number,
+    addToCart: any,
 }
 
 export interface ShopfrontProps {
     appState?: any,
+    addToCart: any,
 };
 export interface ShopfrontState {
     products: object[];
@@ -38,6 +41,7 @@ export interface Product {
     image?: string,
     brand?: brand,
     skus?: sku[],
+    addToCart: any,
 }
 
 export interface Image {

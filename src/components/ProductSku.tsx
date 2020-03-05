@@ -4,7 +4,7 @@ import { sku } from '../Interfaces/interfaces';
 
 
 const ProductSku = (props: sku) => {
-    const { description, id, price, stock } = props;
+    const { description, id, price, stock, addToCart } = props;
 
     const disabled: boolean = stock < 1;
 
@@ -15,7 +15,7 @@ const ProductSku = (props: sku) => {
             <p>£{price}</p>
             <Button
                 label="Add to cart"
-                onClick={() => { console.log('clicked') }}
+                onClick={() => { addToCart(props.productId, id)} }
                 disabled={disabled}
             />
         </section>
