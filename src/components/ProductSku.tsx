@@ -14,7 +14,7 @@ const ProductSku = (props: sku) => {
             <p>qty {stock}</p>
             <p>£{price}</p>
             <Button
-                label="Add to cart"
+                label="Add to Cart"
                 onClick={() => { addToCart(props.productId, id)} }
                 disabled={disabled}
             />

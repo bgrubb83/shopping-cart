@@ -73,7 +73,6 @@ class App extends React.Component<AppProps, AppState> {
 
       // remove one from stock
       skuInStock.stock = skuInStock.stock - 1;
-      console.log(productsCopy);
       this.setState({ products: productsCopy, cartQty: this.state.cartQty + 1 });
     }
   }
