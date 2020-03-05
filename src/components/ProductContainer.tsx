@@ -1,18 +1,18 @@
 import React from 'react';
 import ProductImage from './ProductImage';
+import ProductSku from './ProductSku';
 import { Product, ProductContainerState } from '../Interfaces/interfaces';
 
 class ProductContainer extends React.Component<Product, ProductContainerState> {
-    // const { id, title, image, brand, skus } = props;
     state: ProductContainerState = {
         selectedSku: "",
     };
 
     componentDidMount() {
-        console.log(this.props.skus![0] || null);
-        if (this.props.skus!.length > 0) {
-            this.setState({ selectedSku: this.props!.skus![0].id })
-        }
+        // console.log(this.props.skus![0] || null);
+        // if (this.props.skus!.length > 0) {
+        //     this.setState({ selectedSku: this.props!.skus![0].id })
+        // }
 
 
     }
@@ -27,7 +27,17 @@ class ProductContainer extends React.Component<Product, ProductContainerState> {
                     />
                 </section>
                 <section className="product-container-content">
-                    {this.props.title}
+                    <h2>{this.props.title}</h2>
+                    {this.props.skus?.map((sku) => {
+                        const { description, id, price, stock } = sku;
+                        return <ProductSku
+                            description={description}
+                            id={id}
+                            price={price}
+                            stock={stock}
+                            key={id}
+                        />
+                    })}
                 </section>
             </section>
         )

@@ -1,3 +1,12 @@
+body {
+    font-size: 14px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+p {
+    margin: 0;
+}
+
 .product-container {
     padding: 14px;
     margin: 14px;
@@ -8,7 +17,6 @@
 
 .product-container-image {
     background-color: orange;
-    flex: 1;
 }
 
 .product-image {
@@ -20,4 +28,13 @@
     padding-right: 14px;
     background-color: palegreen;
     flex: 3;
+}
+
+.product-sku {
+    background-color: yellow;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 7px;
+    margin-bottom: 7px;
 }

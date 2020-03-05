@@ -6,14 +6,14 @@ interface brand {
     slug: string,
 }
 
-interface sku {
+// Public
+
+export interface sku {
     description: string,
     id: string,
     price: number,
     stock: number,
 }
-
-// Public
 
 export interface ShopfrontProps {
     message?: string;
@@ -39,4 +39,10 @@ export interface Image {
 
 export interface ProductContainerState {
     selectedSku: string,
+}
+
+export interface ButtonProps {
+    label: string,
+    onClick: any,
+    disabled: boolean,
 }
