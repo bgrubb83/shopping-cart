@@ -97,3 +97,7 @@ button:enabled:hover {
     justify-content: center;
     align-items: center;
 }
+
+.cart-product {
+    background-color: #efeee8;
+}

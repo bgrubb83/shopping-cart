@@ -74,3 +74,8 @@ export interface ButtonProps {
 export interface BadgeProps {
     value?: number,
 };
+
+export interface CartProductProps {
+    title: string,
+    skus: any,
+}

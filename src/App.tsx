@@ -10,13 +10,8 @@ import Cart from './pages/Cart';
 import Badge from './components/Badge';
 import { AppProps, AppState } from './Interfaces/interfaces';
 import { fetchProducts } from './utilities/dataHelpers';
-// import {
-//   addToCart,
-//   removeFromCart,
-//   incrementQty,
-//   decrementQty,
-//   emptyCart
-// } from './services/cartFunctions';
+import { findById } from './services/productFunctions';
+import { addProductSkuToCart } from './services/cartFunctions';
 
 class App extends React.Component<AppProps, AppState> {
   state: AppState = {
@@ -46,32 +41,20 @@ class App extends React.Component<AppProps, AppState> {
   addToCart = (productId: string, skuId: string) => {
     // Make a copy of state to modify
     const productsCopy: object[] = [...this.state.products];
+
     // Check if this sku is still in stock
-    const productInStock: any = productsCopy?.find((product: any) => {
-      return product.id === productId;
-    })
-    const skuInStock = productInStock!.skus.find((sku: any) => {
-      return sku.id === skuId;
-    })
+    const productInStock: any = findById(productId, productsCopy);
+    const skuInStock: any = findById(skuId, productInStock.skus);
     const stock: number = skuInStock.stock;
 
     // If this sku is in stock
     if (stock > 0) {
-      // add one to the cart
-      const productInCart = this.state.cart[productId];
-      let qtyInCart: number;
-      if (productInCart && productInCart[skuId]) {
-        qtyInCart = productInCart[skuId];
-      } else {
-        qtyInCart = 0;
-      }
-      const updatedProduct = { ...productInCart }
-      updatedProduct[skuId] = qtyInCart + 1;
-      const newCart = { ...this.state.cart }
-      newCart[productId] = updatedProduct;
+
+      // Add one to the cart
+      const newCart = addProductSkuToCart(productId, skuId, this.state.cart);
       this.setState({ cart: newCart });
 
-      // remove one from stock
+      // Remove one from stock
       skuInStock.stock = skuInStock.stock - 1;
       this.setState({ products: productsCopy, cartQty: this.state.cartQty + 1 });
     }

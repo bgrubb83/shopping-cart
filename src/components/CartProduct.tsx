@@ -1,14 +1,22 @@
 import React from 'react';
-// import { ButtonProps } from '../Interfaces/interfaces';
-
-interface CartProductProps {
-    title: string,
-}
+import { CartProductProps } from '../Interfaces/interfaces';
+import CartSku from '../components/CartSku';
 
 const CartProduct = (props: CartProductProps) => {
-    const { title } = props;
+    const { title, skus } = props;
 
-return <section>{title}</section>
+    return (
+        <section className="cart-product">
+            <h2>{title}</h2>
+            {skus.map((sku: any) => {
+                console.log(sku);
+                return (
+                    <CartSku
+                    title={sku.description}
+                />)
+            })}
+        </section>
+    )
 }
 
 export default CartProduct;
