@@ -7,15 +7,17 @@ const ProductSku = (props: sku) => {
     // console.log(props);
     const { description, id, price, stock } = props;
 
+    const disabled: boolean = stock < 1;
+
     return (
-        <section className="product-sku">
+        <section className={disabled ? "product-sku disabled-text" : "product-sku"}>
             <p>{description}</p>
             <p>qty {stock}</p>
             <p>£{price}</p>
             <Button
                 label="Add to cart"
                 onClick={() => { console.log('clicked') }}
-                disabled={stock < 1}
+                disabled={disabled}
             />
         </section>
     )
