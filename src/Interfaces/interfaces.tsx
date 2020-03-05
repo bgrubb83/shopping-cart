@@ -18,6 +18,15 @@ export interface AppState {
     products?: object[];
 }
 
+export interface CartProps {
+    appState?: any,
+    emptyCart: any,
+  };
+  
+  export interface CartState {
+    temp?: any;
+  };
+
 export interface sku {
     description: string,
     productId?: string,
@@ -59,7 +68,7 @@ export interface ProductContainerState {
 export interface ButtonProps {
     label: string,
     onClick: any,
-    disabled: boolean,
+    disabled?: boolean,
 }
 
 export interface BadgeProps {

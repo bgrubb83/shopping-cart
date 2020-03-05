@@ -76,7 +76,10 @@ class App extends React.Component<AppProps, AppState> {
       console.log(productsCopy);
       this.setState({ products: productsCopy, cartQty: this.state.cartQty + 1 });
     }
+  }
 
+  emptyCart = () => {
+    this.setState({ cart: {}, cartQty: 0 });
   }
 
   componentDidUpdate() {
@@ -92,14 +95,17 @@ class App extends React.Component<AppProps, AppState> {
               <Link to="/">Shop</Link>
             </section>
             <section className="top-bar-section">
-              <Badge value={this.state.cartQty}/>
+              <Badge value={this.state.cartQty} />
               <Link to="/cart">Cart</Link>
             </section>
           </nav>
 
           <Switch>
             <Route path="/cart">
-              <Cart />
+              <Cart
+                appState={this.state}
+                emptyCart={this.emptyCart}
+              />
             </Route>
             <Route path="/">
               <Shopfront

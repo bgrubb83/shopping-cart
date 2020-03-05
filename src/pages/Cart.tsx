@@ -1,23 +1,23 @@
 import React from 'react';
+import Button from '../components/Button';
+import { CartState, CartProps } from '../Interfaces/interfaces';
 
-interface CartProps {
-    temp?: any;
+class Cart extends React.Component<CartProps, CartState> {
+  state: CartState = {
+    temp: true,
   };
-  interface CartState {
-    temp?: any;
-  };
-  class Cart extends React.Component<CartProps, CartState> {
-    state: CartState = {
-      temp: true,
-    };
-    
-    render() {
-      return (
-        <div>
-          <h2>Cart</h2>
-        </div>
-      );
-    }
+
+  render() {
+    return (
+      <section>
+        <Button
+          label="Empty Cart"
+          onClick={this.props.emptyCart}
+          disabled={this.props.appState.cartQty === 0}
+        />
+      </section>
+    );
   }
+}
 
-  export default Cart;
+export default Cart;
