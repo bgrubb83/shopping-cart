@@ -3,7 +3,6 @@ import { ButtonProps } from '../Interfaces/interfaces';
 
 
 const Button = (props: ButtonProps) => {
-    // console.log(props);
     const { onClick, label, disabled } = props;
 
     return <button

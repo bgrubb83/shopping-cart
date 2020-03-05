@@ -4,18 +4,6 @@ import ProductSku from './ProductSku';
 import { Product, ProductContainerState } from '../Interfaces/interfaces';
 
 class ProductContainer extends React.Component<Product, ProductContainerState> {
-    state: ProductContainerState = {
-        selectedSku: "",
-    };
-
-    componentDidMount() {
-        // console.log(this.props.skus![0] || null);
-        // if (this.props.skus!.length > 0) {
-        //     this.setState({ selectedSku: this.props!.skus![0].id })
-        // }
-
-
-    }
 
     render() {
         return (

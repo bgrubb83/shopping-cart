@@ -8,6 +8,15 @@ interface brand {
 
 // Public
 
+export interface AppProps {
+
+}
+
+export interface AppState {
+    cart?: any,
+    products?: object[];
+}
+
 export interface sku {
     description: string,
     id: string,
@@ -16,7 +25,7 @@ export interface sku {
 }
 
 export interface ShopfrontProps {
-    message?: string;
+    appState?: any,
 };
 export interface ShopfrontState {
     products: object[];
@@ -38,7 +47,7 @@ export interface Image {
 }
 
 export interface ProductContainerState {
-    selectedSku: string,
+    
 }
 
 export interface ButtonProps {
