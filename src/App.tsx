@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Shopfront from './pages/Shopfront';
 import Cart from './pages/Cart';
+import Badge from './components/Badge';
 import { AppProps, AppState } from './Interfaces/interfaces';
 import { fetchProducts } from './utilities/dataHelpers';
 // import {
@@ -20,6 +21,7 @@ import { fetchProducts } from './utilities/dataHelpers';
 class App extends React.Component<AppProps, AppState> {
   state: AppState = {
     cart: {},
+    cartQty: 0,
     products: [{}],
   };
 
@@ -43,7 +45,7 @@ class App extends React.Component<AppProps, AppState> {
 
   addToCart = (productId: string, skuId: string) => {
     // Make a copy of state to modify
-    const productsCopy: object[] = [ ...this.state.products ];
+    const productsCopy: object[] = [...this.state.products];
     // Check if this sku is still in stock
     const productInStock: any = productsCopy?.find((product: any) => {
       return product.id === productId;
@@ -70,9 +72,9 @@ class App extends React.Component<AppProps, AppState> {
       this.setState({ cart: newCart });
 
       // remove one from stock
-      skuInStock.stock = skuInStock.stock -1;
+      skuInStock.stock = skuInStock.stock - 1;
       console.log(productsCopy);
-      this.setState({ products: productsCopy });
+      this.setState({ products: productsCopy, cartQty: this.state.cartQty + 1 });
     }
 
   }
@@ -84,16 +86,15 @@ class App extends React.Component<AppProps, AppState> {
   render() {
     return (
       <Router>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Shop</Link>
-              </li>
-              <li>
-                <Link to="/cart">Cart</Link>
-              </li>
-            </ul>
+        <section>
+          <nav id="top-bar">
+            <section className="top-bar-section">
+              <Link to="/">Shop</Link>
+            </section>
+            <section className="top-bar-section">
+              <Badge value={this.state.cartQty}/>
+              <Link to="/cart">Cart</Link>
+            </section>
           </nav>
 
           <Switch>
@@ -107,7 +108,7 @@ class App extends React.Component<AppProps, AppState> {
               />
             </Route>
           </Switch>
-        </div>
+        </section>
       </Router>
     );
   }

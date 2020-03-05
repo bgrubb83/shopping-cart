@@ -2,6 +2,11 @@ body {
     font-size: 14px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: black;
+    margin: 0;
+    padding: 0;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 p {
@@ -9,6 +14,7 @@ p {
 }
 
 button {
+    transition: background-color 0.25s ease;
     background-color: #182323;
     color: white;
     padding: 7px;
@@ -22,9 +28,13 @@ button:disabled {
     background-color: #c0c0c0;
 }
 
+button:enabled:hover {
+    background-color: #587c76;
+}
+
 .product-container {
     padding: 14px;
-    margin: 14px;
+    margin-top: 14px;
     background-color: #efeee8;
     display: flex;
     flex-direction: row;
@@ -56,4 +66,34 @@ button:disabled {
 
 .disabled-text {
     color: #c0c0c0;
+}
+
+#top-bar {
+    background-color: #587c76;
+    margin: 0;
+    padding: 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#top-bar a {
+    color: white;
+    text-decoration: none;
+}
+
+#top-bar a:hover {
+    color: black;
+}
+
+.top-bar-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.badge {
+    margin-right: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

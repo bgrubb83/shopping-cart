@@ -14,6 +14,7 @@ export interface AppProps {
 
 export interface AppState {
     cart?: any,
+    cartQty: number,
     products?: object[];
 }
 
@@ -30,6 +31,7 @@ export interface ShopfrontProps {
     appState?: any,
     addToCart: any,
 };
+
 export interface ShopfrontState {
     products: object[];
 };
@@ -59,3 +61,7 @@ export interface ButtonProps {
     onClick: any,
     disabled: boolean,
 }
+
+export interface BadgeProps {
+    value?: number,
+};
