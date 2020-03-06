@@ -80,9 +80,27 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   emptyCart = () => {
-    const products: object[] = fetchProducts();
+    // const products: object[] = fetchProducts();
     // console.log('products', products);
-    this.setState({ cart: {}, cartQty: 0, products: products });
+    // this.setState({ cart: {}, cartQty: 0, products: products });
+
+    // for each product sku in cart
+    // increment its stock value in product
+    Object.keys(this.state.cart).forEach((productId) => {
+      Object.keys(this.state.cart[productId]).forEach((skuId) => {
+        // this.state.products![productId][skuId] += this.state.cart[productId][skuId];
+        
+        const productInCart: any = this.state.cart[productId];
+        const skuInCart: any = productInCart[skuId];
+        
+        for (let i = 0; i < skuInCart; i++) {
+          this.removeFromCart(productId, skuId);
+        }
+        
+      })
+    })
+    this.setState({ cart: {}, cartQty: 0 });
+
   }
 
   componentDidUpdate() {
