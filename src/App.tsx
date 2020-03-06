@@ -11,7 +11,7 @@ import Badge from './components/Badge';
 import { AppProps, AppState } from './Interfaces/interfaces';
 import { fetchProducts } from './utilities/dataHelpers';
 import { findById } from './services/productFunctions';
-import { addProductSkuToCart } from './services/productFunctions';
+import { addProductSkuToCart, removeProductSkufromCart } from './services/productFunctions';
 
 class App extends React.Component<AppProps, AppState> {
   state: AppState = {
@@ -60,12 +60,35 @@ class App extends React.Component<AppProps, AppState> {
     }
   }
 
+  removeFromCart = (productId: string, skuId: string) => {
+    // check if this product sku is in cart
+    const productInCart: any = this.state.cart[productId];
+    const skuInCart: any = productInCart[skuId];
+    // console.log(skuInCart);
+    // if it is
+    if (skuInCart && skuInCart > 0) {
+      // remove one from the cart
+      const newCart = removeProductSkufromCart(productId, skuId, this.state.cart);
+      this.setState({ cart: newCart });
+      // add one to stock
+      const productsCopy: object[] = [...this.state.products];
+      const productInStock: any = findById(productId, productsCopy);
+      const skuInStock: any = findById(skuId, productInStock.skus);
+      skuInStock.stock = skuInStock.stock + 1;
+      this.setState({ products: productsCopy, cartQty: this.state.cartQty - 1 });
+    }
+  }
+
   emptyCart = () => {
-    this.setState({ cart: {}, cartQty: 0 });
+    const products: object[] = fetchProducts();
+    // console.log('products', products);
+    this.setState({ cart: {}, cartQty: 0, products: products });
   }
 
   componentDidUpdate() {
     console.log('cart', this.state.cart);
+    // const products: object[] = fetchProducts();
+    // console.log('products', products);
   }
 
   render() {
@@ -88,6 +111,7 @@ class App extends React.Component<AppProps, AppState> {
                 appState={this.state}
                 emptyCart={this.emptyCart}
                 addToCart={this.addToCart}
+                removeFromCart={this.removeFromCart}
               />
             </Route>
             <Route path="/">

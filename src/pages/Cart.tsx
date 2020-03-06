@@ -10,8 +10,8 @@ class Cart extends React.Component<CartProps, CartState> {
   };
 
   render() {
-    const { emptyCart, appState, addToCart } = this.props;
-    console.log(appState.cart);
+    const { emptyCart, appState, addToCart, removeFromCart } = this.props;
+    // console.log(appState.cart);
     return (
       <section>
         <Button
@@ -28,6 +28,7 @@ class Cart extends React.Component<CartProps, CartState> {
             skus={findProductSkus(productId, appState.products, appState.cart[productId])}
             cartProduct={appState.cart[productId]}
             addToCart={addToCart}
+            removeFromCart={removeFromCart}
             productId={productId}
             key={productId}
           />

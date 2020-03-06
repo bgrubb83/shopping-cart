@@ -22,6 +22,7 @@ export interface CartProps {
     appState?: any,
     emptyCart: any,
     addToCart: any,
+    removeFromCart: any,
   };
   
   export interface CartState {
@@ -83,4 +84,5 @@ export interface CartProductProps {
     cartProduct: any,
     addToCart: any,
     productId: string,
+    removeFromCart: any,
 }

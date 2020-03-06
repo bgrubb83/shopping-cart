@@ -3,13 +3,13 @@ import { CartProductProps } from '../Interfaces/interfaces';
 import CartSku from '../components/CartSku';
 
 const CartProduct = (props: CartProductProps) => {
-    const { title, skus, cartProduct, addToCart, productId } = props;
+    const { title, skus, cartProduct, addToCart, productId, removeFromCart } = props;
 
     return (
         <section className="cart-product">
             <h2>{title}</h2>
             {skus.map((sku: any) => {
-                console.log(sku);
+                // console.log(sku);
                 return (
                     <CartSku
                     title={sku.description}
@@ -17,6 +17,7 @@ const CartProduct = (props: CartProductProps) => {
                     stock={sku.stock}
                     price={sku.price}
                     addToCart={addToCart}
+                    removeFromCart={removeFromCart}
                     productId={productId}
                     skuId={sku.id}
                     key={sku.id}

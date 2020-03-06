@@ -11,10 +11,11 @@ interface CartSkuProps {
     addToCart: any,
     productId: string,
     skuId: string,
+    removeFromCart: any,
 }
 
 const CartSku = (props: CartSkuProps) => {
-    const { title, price, qty, stock, addToCart, productId, skuId } = props;
+    const { title, price, qty, stock, addToCart, productId, skuId, removeFromCart } = props;
 
     return <section className="cart-sku">
         <p>{title}</p>
@@ -22,7 +23,7 @@ const CartSku = (props: CartSkuProps) => {
             <Button
             className="margin-right"
             label="-"
-            onClick={()=> {}}
+            onClick={()=> {removeFromCart(productId, skuId)}}
             />
             <p>qty {qty}</p>
             <Button
