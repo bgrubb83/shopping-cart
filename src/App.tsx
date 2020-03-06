@@ -11,7 +11,7 @@ import Badge from './components/Badge';
 import { AppProps, AppState } from './Interfaces/interfaces';
 import { fetchProducts } from './utilities/dataHelpers';
 import { findById } from './services/productFunctions';
-import { addProductSkuToCart } from './services/cartFunctions';
+import { addProductSkuToCart } from './services/productFunctions';
 
 class App extends React.Component<AppProps, AppState> {
   state: AppState = {
@@ -87,6 +87,7 @@ class App extends React.Component<AppProps, AppState> {
               <Cart
                 appState={this.state}
                 emptyCart={this.emptyCart}
+                addToCart={this.addToCart}
               />
             </Route>
             <Route path="/">

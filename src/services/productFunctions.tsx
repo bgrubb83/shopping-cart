@@ -17,3 +17,22 @@ export function findProductSkus(productId: string, products: any, cartProduct: o
         return cartProduct[sku.id];
     });
 }
+
+export function addProductSkuToCart(productId: string, skuId: string, cart: any) {
+    const productInCart = cart[productId];
+    let qtyInCart: number;
+    if (productInCart && productInCart[skuId]) {
+      qtyInCart = productInCart[skuId];
+    } else {
+      qtyInCart = 0;
+    }
+    const updatedProduct = { ...productInCart }
+    updatedProduct[skuId] = qtyInCart + 1;
+    const newCart = { ...cart }
+    newCart[productId] = updatedProduct;
+    return newCart;
+  }
+
+  export function calculatePrice(price: number, quantity: number) {
+    return price * quantity;
+  }

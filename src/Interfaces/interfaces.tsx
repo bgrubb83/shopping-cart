@@ -21,6 +21,7 @@ export interface AppState {
 export interface CartProps {
     appState?: any,
     emptyCart: any,
+    addToCart: any,
   };
   
   export interface CartState {
@@ -69,6 +70,7 @@ export interface ButtonProps {
     label: string,
     onClick: any,
     disabled?: boolean,
+    className?: string,
 }
 
 export interface BadgeProps {
@@ -78,4 +80,7 @@ export interface BadgeProps {
 export interface CartProductProps {
     title: string,
     skus: any,
+    cartProduct: any,
+    addToCart: any,
+    productId: string,
 }
