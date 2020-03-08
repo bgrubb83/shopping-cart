@@ -1,9 +1,9 @@
 import React from 'react';
 import ProductImage from './ProductImage';
 import ProductSku from './ProductSku';
-import { Product, ProductContainerState } from '../Interfaces/interfaces';
+import { Product } from '../Interfaces/interfaces';
 
-class ProductContainer extends React.Component<Product, ProductContainerState> {
+class ProductContainer extends React.Component<Product> {
 
     render() {
         return (
