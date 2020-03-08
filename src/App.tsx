@@ -88,11 +88,11 @@ class App extends React.Component<AppProps, AppState> {
         <section>
           <nav id="top-bar">
             <section className="top-bar-section">
-              <Link to="/">Shop</Link>
+              <Link to="/" className="shop-link">Shop</Link>
             </section>
             <section className="top-bar-section">
               <Badge value={this.state.cartQty} />
-              <Link to="/cart">Cart</Link>
+              <Link to="/cart" className="cart-link">Cart</Link>
             </section>
           </nav>
           <Switch>

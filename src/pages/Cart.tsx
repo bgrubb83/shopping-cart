@@ -11,7 +11,7 @@ class Cart extends React.Component<CartProps> {
 
     return (
       <section>
-        <Button
+        <Button className="empty-cart-button"
           label="Empty Cart"
           onClick={emptyCart}
           disabled={appState.cartQty === 0}
