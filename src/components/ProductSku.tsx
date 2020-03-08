@@ -2,10 +2,8 @@ import React from 'react';
 import Button from './Button';
 import { sku } from '../Interfaces/interfaces';
 
-
 const ProductSku = (props: sku) => {
     const { description, id, price, stock, addToCart } = props;
-
     const disabled: boolean = stock < 1;
 
     return (

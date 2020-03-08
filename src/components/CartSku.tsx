@@ -1,18 +1,7 @@
 import React from 'react';
-// import { CartSkuProps } from '../Interfaces/interfaces';
-import { calculatePrice } from '../services/productFunctions';
 import Button from './Button';
-
-interface CartSkuProps {
-    title?: string,
-    qty: number,
-    price: number,
-    stock: number,
-    addToCart: any,
-    productId: string,
-    skuId: string,
-    removeFromCart: any,
-}
+import { calculatePrice } from '../services/productFunctions';
+import { CartSkuProps } from '../Interfaces/interfaces';
 
 const CartSku = (props: CartSkuProps) => {
     const { title, price, qty, stock, addToCart, productId, skuId, removeFromCart } = props;

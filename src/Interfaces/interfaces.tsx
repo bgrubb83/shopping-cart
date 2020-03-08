@@ -25,9 +25,9 @@ export interface CartProps {
     removeFromCart: any,
   };
   
-  export interface CartState {
-    temp?: any;
-  };
+//   export interface CartState {
+//     temp?: any;
+//   };
 
 export interface sku {
     description: string,
@@ -43,9 +43,9 @@ export interface ShopfrontProps {
     addToCart: any,
 };
 
-export interface ShopfrontState {
-    products: object[];
-};
+// export interface ShopfrontState {
+//     products: object[];
+// };
 
 export interface Product {
     key?: string,
@@ -84,5 +84,16 @@ export interface CartProductProps {
     cartProduct: any,
     addToCart: any,
     productId: string,
+    removeFromCart: any,
+}
+
+export interface CartSkuProps {
+    title?: string,
+    qty: number,
+    price: number,
+    stock: number,
+    addToCart: any,
+    productId: string,
+    skuId: string,
     removeFromCart: any,
 }

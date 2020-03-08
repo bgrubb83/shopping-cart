@@ -31,9 +31,7 @@ class ProductContainer extends React.Component<Product, ProductContainerState> {
                 </section>
             </section>
         )
-
     }
-
 }
 
 export default ProductContainer;

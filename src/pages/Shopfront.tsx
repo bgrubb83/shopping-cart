@@ -1,10 +1,8 @@
 import React from 'react';
 import ProductContainer from '../components/ProductContainer';
+import { ShopfrontProps, Product } from '../Interfaces/interfaces';
 
-import { ShopfrontProps, ShopfrontState, Product } from '../Interfaces/interfaces';
-
-class Shopfront extends React.Component<ShopfrontProps, ShopfrontState> {
-
+class Shopfront extends React.Component<ShopfrontProps> {
     render() {
         return (
             <div>

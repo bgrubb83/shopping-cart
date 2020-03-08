@@ -1,24 +1,22 @@
-export function findById(id: string, collection: any) {
+export function findById(id: string, collection: any): any {
     return collection.find((item: any) => {
         return item.id === id;
     })
 }
 
-export function findProductTitle(productId: string, products: any) {
+export function findProductTitle(productId: string, products: any): any {
     const product = findById(productId, products);
     return product.title;
 }
 
-export function findProductSkus(productId: string, products: any, cartProduct: object[]) {
-    // console.log(cartProduct);
+export function findProductSkus(productId: string, products: any, cartProduct: object[]): any {
     const product = findById(productId, products);
     return product.skus.filter((sku) => {
-        // console.log(sku);
         return cartProduct[sku.id];
     });
 }
 
-export function addProductSkuToCart(productId: string, skuId: string, cart: any) {
+export function addProductSkuToCart(productId: string, skuId: string, cart: any): any {
     const productInCart = cart[productId];
     let qtyInCart: number;
     if (productInCart && productInCart[skuId]) {
@@ -33,7 +31,7 @@ export function addProductSkuToCart(productId: string, skuId: string, cart: any)
     return newCart;
 }
 
-export function removeProductSkufromCart(productId: string, skuId: string, cart: any) {
+export function removeProductSkufromCart(productId: string, skuId: string, cart: any): any {
     const productInCart = cart[productId];
     let qtyInCart: number;
     if (productInCart && productInCart[skuId]) {
@@ -54,10 +52,9 @@ export function removeProductSkufromCart(productId: string, skuId: string, cart:
             delete newCart[productId];
         }
     }
-
     return newCart;
 }
 
-export function calculatePrice(price: number, quantity: number) {
+export function calculatePrice(price: number, quantity: number): number {
     return price * quantity;
 }

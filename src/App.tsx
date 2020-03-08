@@ -23,26 +23,13 @@ class App extends React.Component<AppProps, AppState> {
   componentDidMount() {
     const products: object[] = fetchProducts();
     this.setState({ products: products });
-
   }
 
-  /* 
-  
-  state.cart = {
-    PRODUCT_ID: {
-      SKU:ID: 10, // qty
-    }
-  }
-  
-  state.products
-  
-  */
-
-  addToCart = (productId: string, skuId: string) => {
+  addToCart = (productId: string, skuId: string): void => {
     // Make a copy of state to modify
     const productsCopy: object[] = [...this.state.products];
 
-    // Check if this sku is still in stock
+    // Check if this sku is in stock
     const productInStock: any = findById(productId, productsCopy);
     const skuInStock: any = findById(skuId, productInStock.skus);
     const stock: number = skuInStock.stock;
@@ -60,12 +47,12 @@ class App extends React.Component<AppProps, AppState> {
     }
   }
 
-  removeFromCart = (productId: string, skuId: string) => {
-    // check if this product sku is in cart
+  removeFromCart = (productId: string, skuId: string): void => {
+    // check if this product sku is in the cart
     const productInCart: any = this.state.cart[productId];
     const skuInCart: any = productInCart[skuId];
-    // console.log(skuInCart);
-    // if it is
+
+    // if this product sku is in the cart
     if (skuInCart && skuInCart > 0) {
       // remove one from the cart
       const newCart = removeProductSkufromCart(productId, skuId, this.state.cart);
@@ -79,34 +66,20 @@ class App extends React.Component<AppProps, AppState> {
     }
   }
 
-  emptyCart = () => {
-    // const products: object[] = fetchProducts();
-    // console.log('products', products);
-    // this.setState({ cart: {}, cartQty: 0, products: products });
-
-    // for each product sku in cart
-    // increment its stock value in product
+  emptyCart = (): void => {
+    // for each product sku in the cart
+    // increment its stock value in the product list
     Object.keys(this.state.cart).forEach((productId) => {
       Object.keys(this.state.cart[productId]).forEach((skuId) => {
-        // this.state.products![productId][skuId] += this.state.cart[productId][skuId];
-        
         const productInCart: any = this.state.cart[productId];
         const skuInCart: any = productInCart[skuId];
-        
+
         for (let i = 0; i < skuInCart; i++) {
           this.removeFromCart(productId, skuId);
         }
-        
       })
     })
     this.setState({ cart: {}, cartQty: 0 });
-
-  }
-
-  componentDidUpdate() {
-    console.log('cart', this.state.cart);
-    // const products: object[] = fetchProducts();
-    // console.log('products', products);
   }
 
   render() {
@@ -122,7 +95,6 @@ class App extends React.Component<AppProps, AppState> {
               <Link to="/cart">Cart</Link>
             </section>
           </nav>
-
           <Switch>
             <Route path="/cart">
               <Cart
