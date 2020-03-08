@@ -1,16 +1,17 @@
-export function findById(id: string, collection: any): any {
+export function findById(id: string, collection: object[]): any {
     return collection.find((item: any) => {
         return item.id === id;
     })
 }
 
-export function findProductTitle(productId: string, products: any): any {
+export function findProductTitle(productId: string, products: object[]): any {
     const product = findById(productId, products);
-    return product.title;
+    return product && product.title ? product.title : 'Untitled';
 }
 
-export function findProductSkus(productId: string, products: any, cartProduct: object[]): any {
+export function findProductSkus(productId: string, products: any, cartProduct: any): any {
     const product = findById(productId, products);
+
     return product.skus.filter((sku) => {
         return cartProduct[sku.id];
     });
